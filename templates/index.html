@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {%block title%}Home{% endblock %} {% block content %} <h1>Flask Boggle!</h1>
+<div class="tableform"></div>
+<table>
+    <tbody> {% for i in range(board | length) %} <tr class="row" id="row{{i}}"> {% for j in range(board[i] | length) %}
+            <td class="cell row{{i}}" id="{{i}}-{{j}}">{{board[i][j]}}</td> {% endfor %} </tr> {% endfor %} </tbody>
+</table>
+<form action="/submit" id="boggleform" method="POST">
+    <label for="guess">Enter your Guess here!</label><br>
+    <input type="text" id="guess" name="guess" required><button id="gamebtn" class="btn btn-success">Submit</button>
+</form>
+</div>
+<div id="result">ENTER A WORD IN THE FORM ABOVE<br>WORDS ARE SCORED BY LENGTH!</div>
+<div id="highscore">Your current high score is <span id="record">{{high_score}}</span></div>
+<div id="timesplayed">You have played the game a total of <span id="currtimes">{{times_played}}</span> times!</div>
+<div id="timer" class="d-flex flex-column align-items-center align-items-center mt-1">1m 00s </div>
+<p id="usedwords">Words Used: </p>{% endblock %}
